@@ -1,3 +1,9 @@
+*, *::before, *::after {
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+ }
+
 html {
      height: 100%; /* makes sure our HTML takes up 100% of the browser window */
      font-size: 100%;
@@ -12,6 +18,7 @@ html {
  body.landing {
      background-color: rgb(58,23,63); /* sets the background color to an RGB value (see below) */
  }
+
 .navbar {
      padding: 0.5rem;
      background-color: rgb(101,18,95);
@@ -28,7 +35,10 @@ html {
      background-repeat: no-repeat;
      background-position: center center;
      background-size: cover;
-}
+    
+.navbar > .logo {
+    position: relative;
+    left: 2rem;
 
 hero-content .hero-title {
      position: absolute;             /* positioning will be explained in a resource */
@@ -52,6 +62,10 @@ hero-content .hero-title {
      -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
      box-sizing: border-box; /* we'll explain this in a resource */
+}
+.container {
+     margin: 0 auto;
+     max-width: 64rem;
  }
  
  .point {
@@ -60,15 +74,35 @@ hero-content .hero-title {
      width: 33.3%;
      padding: 2rem;
      text-align: center;
+/* Medium and small screens (640px) */
+     
+ @media (min-width: 640px) {
+      html { font-size: 112%; }
+          .column {
+         float: left;
+         padding-left: 1rem;
+         padding-right: 1rem;
+     }
+ }
+  .column.full { width: 100%; }
+     .column.two-thirds { width: 66.7%; }
+     .column.half { width: 50%; }
+     .column.third { width: 33.3%; }
+     .column.fourth { width: 25%; }
+     .column.flow-opposite { float: right; }  
  }
  
- .point .point-title {
-     font-size: 1.25rem;
+ /* Large screens (1024px) */
+ @media (min-width: 1024px) {
+   html { font-size: 120%; }
  }
- 
- .ion-music-note,
- .ion-radio-waves,
- .ion-iphone {
-     color: rgb(233,50,117);
-     font-size: 5rem;
- }
+
+.clearfix::before,
+.clearfix::after {
+   content: " ";
+   display: table;
+}
+
+.clearfix::after {
+   clear: both;
+}
