@@ -66,6 +66,7 @@ html {
  }
 .links-container .navbar-link:active {
      background-color: white;
+}
 .hero-content {
      position: relative; /* positioning will be explained in a resource */
      min-height: 600px;  /* hero content element must be _at least_ 600 pixels */
@@ -73,10 +74,12 @@ html {
      background-repeat: no-repeat;
      background-position: center center;
      background-size: cover;
+}
     
 .navbar > .logo {
     position: relative;
     left: 2rem;
+}
 
 hero-content .hero-title {
      position: absolute;             /* positioning will be explained in a resource */
@@ -97,9 +100,6 @@ hero-content .hero-title {
      position: relative;
      display: table;
      width: 100%;
-     -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-     box-sizing: border-box; /* we'll explain this in a resource */
 }
 .container {
      margin: 0 auto;
@@ -109,35 +109,18 @@ hero-content .hero-title {
      max-width: 56rem;
  }
  
- .point {
-     display: table-cell;
-     position: relative;
-     width: 33.3%;
-     padding: 2rem;
-     text-align: center;
-/* Medium and small screens (640px) */
-     
- @media (min-width: 640px) {
-      html { font-size: 112%; }
-          .column {
+.point {
+ display: table-cell;
+ position: relative;
+ width: 33.3%;
+ padding: 2rem;
+ text-align: center;
+}
+.column {
          float: left;
          padding-left: 1rem;
          padding-right: 1rem;
      }
- }
-  .column.full { width: 100%; }
-     .column.two-thirds { width: 66.7%; }
-     .column.half { width: 50%; }
-     .column.third { width: 33.3%; }
-     .column.fourth { width: 25%; }
-     .column.flow-opposite { float: right; }  
- }
- 
- /* Large screens (1024px) */
- @media (min-width: 1024px) {
-   html { font-size: 120%; }
- }
-
 .clearfix::before,
 .clearfix::after {
    content: " ";
@@ -147,3 +130,24 @@ hero-content .hero-title {
 .clearfix::after {
    clear: both;
 }
+
+.column.full { width: 100%; }
+.column.two-thirds { width: 66.7%; }
+.column.half { width: 50%; }
+.column.third { width: 33.3%; }
+.column.fourth { width: 25%; }
+.column.flow-opposite { float: right; }  
+     
+
+     
+     
+ /* Medium screens (640px) */
+ @media (min-width: 640px) {
+     html { font-size: 112%; }
+ }
+
+ /* Large screens (1024px) */
+ @media (min-width: 1024px) {
+     html { font-size: 120%; }
+ }
+     
