@@ -27,6 +27,7 @@ var albumPicasso = {
          { title: 'Can you hear me now?', duration: '3:14' },
          { title: 'Wrong phone number', duration: '2:15'}
      ]
+ }
 // Another Example Album
  var albumAssignmentExample = {
      title: 'The Homework',
@@ -55,13 +56,6 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
-albumTitle.firstChild.nodeValue = album.title;
-     albumArtist.firstChild.nodeValue = album.artist;
-     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
-     albumImage.setAttribute('src', album.albumArtUrl);
- 
-     // #3
-     albumSongList.innerHTML = '';
 
 var setCurrentAlbum = function(album) {
      // #1
@@ -73,7 +67,23 @@ var setCurrentAlbum = function(album) {
  
      // #2
      
+    albumTitle.firstChild.nodeValue = album.title;
+     albumArtist.firstChild.nodeValue = album.artist;
+     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
+     albumImage.setAttribute('src', album.albumArtUrl);
  
+    
+    albumImage.addEventListener('click', function(event) {
+         setCurrentAlbum(albums[index]);
+         index++;
+         if (index == albums.length){
+             index = 0;
+         }
+     });
+    
+     // #3
+     albumSongList.innerHTML = '';
+
      // #4
      for (var i = 0; i < album.songs.length; i++) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
@@ -97,12 +107,12 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
          console.log(event.target);
         if (event.target.parentElement.className === 'album-view-song-item') {
              // Change the content from the number to the play button's HTML
-                event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+            event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
              var songItem = getSongItem(event.target);
-+
-+            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
-+                songItem.innerHTML = playButtonTemplate;
-+            } 
+
+            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
+                songItem.innerHTML = playButtonTemplate;
+            } 
          }
      });
      
@@ -117,7 +127,10 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
              if (songItemNumber !== currentlyPlayingSong) {
                  songItem.innerHTML = songItemNumber;
              }
-         songRows[i].addEventListener('click', function(event) {
+         })
+         
+            
+        songRows[i].addEventListener('click', function(event) {
              // Event handler call
                clickHandler(event.target);
          });
@@ -125,13 +138,7 @@ var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause">
      
      var albums = [albumPicasso, albumMarconi, albumAssignmentExample];
      var index = 1;
-albumImage.addEventListener('click', function(event) {
-         setCurrentAlbum(albums[index]);
-         index++;
-         if (index == albums.length){
-             index = 0;
-         }
-     });
+
  var findParentByClassName = function(element, targetClass) {
     if (element) {
           var currentParent = element.parentElement;
@@ -191,5 +198,5 @@ albumImage.addEventListener('click', function(event) {
  };
 
  };
- }
- };
+ 
+ 
